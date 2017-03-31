@@ -8,6 +8,9 @@ import android.content.Context;
 
 import javax.inject.Singleton;
 
+import aut.bme.hu.mobsoftlab.ui.admin.AdminPresenter;
+import aut.bme.hu.mobsoftlab.ui.details.DetailsPresenter;
+import aut.bme.hu.mobsoftlab.ui.login.LoginPresenter;
 import aut.bme.hu.mobsoftlab.ui.main.MainPresenter;
 import dagger.Module;
 import dagger.Provides;
@@ -29,6 +32,24 @@ public class UIModule {
     @Singleton
     public MainPresenter provideMainPresenter() {
         return new MainPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public LoginPresenter provideLoginPresenter() {
+        return new LoginPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public AdminPresenter provideAdminPresenter() {
+        return new AdminPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public DetailsPresenter provideDetailsPresenter() {
+        return new DetailsPresenter();
     }
 
 }

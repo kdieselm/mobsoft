@@ -7,6 +7,9 @@ package aut.bme.hu.mobsoftlab;
 import javax.inject.Singleton;
 
 import aut.bme.hu.mobsoftlab.ui.UIModule;
+import aut.bme.hu.mobsoftlab.ui.admin.AdminActivity;
+import aut.bme.hu.mobsoftlab.ui.details.DetailsActivity;
+import aut.bme.hu.mobsoftlab.ui.login.LoginActivity;
 import aut.bme.hu.mobsoftlab.ui.main.MainActivity;
 import dagger.Component;
 
@@ -15,5 +18,7 @@ import dagger.Component;
 @Component(modules = {UIModule.class})
 public interface MobSoftApplicationComponent {
     void inject(MainActivity mainActivity);
-
+    void inject(LoginActivity loginActivity);
+    void inject(AdminActivity adminActivity);
+    void inject(DetailsActivity detailsActivity);
 }

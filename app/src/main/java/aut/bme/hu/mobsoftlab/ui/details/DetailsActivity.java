@@ -1,8 +1,7 @@
-package aut.bme.hu.mobsoftlab.ui.main;
+package aut.bme.hu.mobsoftlab.ui.details;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 
@@ -11,15 +10,19 @@ import javax.inject.Inject;
 import aut.bme.hu.mobsoftlab.MobSoftApplication;
 import aut.bme.hu.mobsoftlab.R;
 
-public class MainActivity extends AppCompatActivity implements MainScreen {
+/**
+ * Created by mobsoft on 2017. 03. 31..
+ */
+
+public class DetailsActivity extends AppCompatActivity implements DetailsScreen {
 
     @Inject
-    MainPresenter mainPresenter;
+    DetailsPresenter detailsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_details);
 
         MobSoftApplication.injector.inject(this);
     }
@@ -27,22 +30,27 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     @Override
     protected void onStart() {
         super.onStart();
-        mainPresenter.attachScreen(this);
+        detailsPresenter.attachScreen(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mainPresenter.detachScreen();
+        detailsPresenter.detachScreen();
     }
 
     @Override
-    public void showMessage(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    public void showModel(String model) {
+
     }
 
     @Override
-    public void showList(List<String> movies) {
+    public void showRating(int rating) {
+
+    }
+
+    @Override
+    public void showActorList(List<String> actors) {
 
     }
 }
