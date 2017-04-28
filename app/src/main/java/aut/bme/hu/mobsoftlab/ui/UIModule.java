@@ -51,5 +51,4 @@ public class UIModule {
     public DetailsPresenter provideDetailsPresenter() {
         return new DetailsPresenter();
     }
-
 }

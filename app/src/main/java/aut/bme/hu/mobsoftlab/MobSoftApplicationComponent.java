@@ -6,19 +6,26 @@ package aut.bme.hu.mobsoftlab;
 
 import javax.inject.Singleton;
 
+import aut.bme.hu.mobsoftlab.interactor.InteractorModule;
+import aut.bme.hu.mobsoftlab.interactor.movie.MoviesInteractor;
+import aut.bme.hu.mobsoftlab.repository.RepositoryModule;
 import aut.bme.hu.mobsoftlab.ui.UIModule;
 import aut.bme.hu.mobsoftlab.ui.admin.AdminActivity;
 import aut.bme.hu.mobsoftlab.ui.details.DetailsActivity;
 import aut.bme.hu.mobsoftlab.ui.login.LoginActivity;
 import aut.bme.hu.mobsoftlab.ui.main.MainActivity;
+import aut.bme.hu.mobsoftlab.ui.main.MainPresenter;
 import dagger.Component;
 
 
 @Singleton
-@Component(modules = {UIModule.class})
+@Component(modules = {UIModule.class, InteractorModule.class, RepositoryModule.class})
 public interface MobSoftApplicationComponent {
     void inject(MainActivity mainActivity);
     void inject(LoginActivity loginActivity);
     void inject(AdminActivity adminActivity);
     void inject(DetailsActivity detailsActivity);
+    void inject(MoviesInteractor moviesInteractor);
+    void inject(MobSoftApplication mobSoftApplication);
+    void inject(MainPresenter mainPresenter);
 }

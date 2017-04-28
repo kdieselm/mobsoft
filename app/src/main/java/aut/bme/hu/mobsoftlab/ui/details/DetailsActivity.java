@@ -23,7 +23,6 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-
         MobSoftApplication.injector.inject(this);
     }
 
@@ -41,16 +40,13 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
 
     @Override
     public void showModel(String model) {
-
     }
 
     @Override
     public void showRating(int rating) {
-
     }
 
     @Override
     public void showActorList(List<String> actors) {
-
     }
 }
