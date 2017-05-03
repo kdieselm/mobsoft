@@ -6,6 +6,9 @@ package aut.bme.hu.mobsoftlab.ui;
 
 import android.content.Context;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import javax.inject.Singleton;
 
 import aut.bme.hu.mobsoftlab.ui.admin.AdminPresenter;
@@ -14,6 +17,7 @@ import aut.bme.hu.mobsoftlab.ui.login.LoginPresenter;
 import aut.bme.hu.mobsoftlab.ui.main.MainPresenter;
 import dagger.Module;
 import dagger.Provides;
+import de.greenrobot.event.EventBus;
 
 @Module
 public class UIModule {
@@ -50,5 +54,17 @@ public class UIModule {
     @Singleton
     public DetailsPresenter provideDetailsPresenter() {
         return new DetailsPresenter();
+    }
+
+    @Provides
+    @Singleton
+    EventBus provideEventBus() {
+        return EventBus.getDefault();
+    }
+
+    @Provides
+    @Singleton
+    Executor provideExecutor() {
+        return Executors.newFixedThreadPool(1);
     }
 }

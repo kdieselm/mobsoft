@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
 
     @Override
     protected void onStop() {
-        super.onStop();
         mainPresenter.detachScreen();
+        super.onStop();
     }
 
     @Override
