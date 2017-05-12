@@ -2,6 +2,9 @@ package aut.bme.hu.mobsoftlab;
 
 import android.app.Application;
 
+import javax.inject.Inject;
+
+import aut.bme.hu.mobsoftlab.repository.Repository;
 import aut.bme.hu.mobsoftlab.ui.UIModule;
 
 /**
@@ -10,7 +13,16 @@ import aut.bme.hu.mobsoftlab.ui.UIModule;
 
 public class MobSoftApplication extends Application {
 
+    @Inject
+    Repository repository;
+
     public static MobSoftApplicationComponent injector;
+
+    public void setInjector(MobSoftApplicationComponent appComponent) {
+        injector = appComponent;
+        injector.inject(this);
+        repository.open(getApplicationContext());
+    }
 
     @Override
     public void onCreate() {

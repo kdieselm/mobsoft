@@ -1,13 +1,18 @@
 package aut.bme.hu.mobsoftlab.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.orm.dsl.Table;
+
+import java.util.Objects;
 
 @Table
 public class Rating {
   private Long id = null;
   private Long user_id = null;
   private Long movie_id = null;
-  private int rating;
+
+
+  private int movierating;
 
 
   public Rating() {
@@ -17,7 +22,7 @@ public class Rating {
     this.id = id;
     user_id = uid;
     movie_id = mid;
-    this.rating = rating;
+    this.movierating = rating;
   }
 
   public Long getId() {
@@ -44,7 +49,7 @@ public class Rating {
     this.movie_id = movie_id;
   }
 
-  public int getRating() {
+  public int getMovieRating() {
     return rating;
   }
 
@@ -52,6 +57,95 @@ public class Rating {
     this.rating = rating;
   }
 
+  @SerializedName("user_id")
+  private Integer userId = null;
+
+  @SerializedName("movie_id")
+  private Integer movieId = null;
+
+  @SerializedName("rating")
+  private Integer rating = null;
+
+
+
+  /**
+   * Felhasználó azonosító
+   **/
+
+  public Integer getUserId() {
+    return userId;
+  }
+  public void setUserId(Integer userId) {
+    this.userId = userId;
+  }
+
+
+  /**
+   * Film azon
+   **/
+
+  public Integer getMovieId() {
+    return movieId;
+  }
+  public void setMovieId(Integer movieId) {
+    this.movieId = movieId;
+  }
+
+
+  /**
+   * Rating
+   **/
+
+  public Integer getRating() {
+    return rating;
+  }
+  public void setRating(Integer rating) {
+    this.rating = rating;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Rating rating = (Rating) o;
+    return Objects.equals(userId, rating.userId) &&
+            Objects.equals(movieId, rating.movieId) &&
+            Objects.equals(rating, rating.rating);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(userId, movieId, rating);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Rating {\n");
+
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    movieId: ").append(toIndentedString(movieId)).append("\n");
+    sb.append("    rating: ").append(toIndentedString(rating)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 
 
 }

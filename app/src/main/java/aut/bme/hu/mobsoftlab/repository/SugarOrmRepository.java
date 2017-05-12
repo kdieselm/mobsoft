@@ -52,7 +52,7 @@ public class SugarOrmRepository implements Repository {
     @Override
     public boolean loginUser(Profile profile) {
         Profile prof = SugarRecord.findById(Profile.class, profile.getId());
-        if(prof.getEmail() == profile.getEmail() && prof.getPassword() == profile.getPassword()){
+        if(prof.getEmail() == profile.getEmail()){
             return true;
         }
         return false;
@@ -68,7 +68,7 @@ public class SugarOrmRepository implements Repository {
         List<Rating> ratings = SugarRecord.listAll(Rating.class);
         List<Rating> ratingsForMovie = new ArrayList<>();
         for(int i=0; i<ratings.size(); i++){
-            if(ratings.get(i).getMovie_id() == movie.getId()){
+            if(ratings.get(i).getMovie_id() == movie.getMovieId()){
                 ratingsForMovie.add(ratings.get(i));
             }
         }
