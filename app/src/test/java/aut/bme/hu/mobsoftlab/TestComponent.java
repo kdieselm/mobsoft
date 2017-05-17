@@ -14,6 +14,6 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {MockNetworkModule.class, TestModule.class, InteractorModule.class, TestRepositoryModule.class, NetworkModule.class})
+@Component(modules = {MockNetworkModule.class, TestModule.class, InteractorModule.class, TestRepositoryModule.class})
 public interface TestComponent extends MobSoftApplicationComponent {
 }

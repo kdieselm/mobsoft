@@ -9,7 +9,15 @@ import aut.bme.hu.mobsoftlab.model.Profile;
 public class LoginEvent {
     private Profile profile;
     private Throwable throwable;
+    private boolean isSuccess;
 
+    public boolean isSuccess() {
+        return isSuccess;
+    }
+
+    public void setSuccess(boolean success) {
+        isSuccess = success;
+    }
 
     public Profile getProfile() {
         return profile;

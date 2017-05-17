@@ -6,6 +6,7 @@ import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
+import aut.bme.hu.mobsoftlab.MobSoftApplication;
 import aut.bme.hu.mobsoftlab.interactor.movie.MoviesInteractor;
 import aut.bme.hu.mobsoftlab.interactor.movie.events.GetAllMoviesEvent;
 import aut.bme.hu.mobsoftlab.interactor.user.UserInteractor;
@@ -33,6 +34,7 @@ public class LoginPresenter extends Presenter<LoginScreen> {
     EventBus bus;
 
     public LoginPresenter() {
+
     }
 
     @Override
@@ -55,6 +57,7 @@ public class LoginPresenter extends Presenter<LoginScreen> {
                 userInteractor.logIn(profile);
             }
         });
+
     }
 
 
@@ -69,7 +72,8 @@ public class LoginPresenter extends Presenter<LoginScreen> {
         } else {
             if (screen != null) {
                 Profile prof = event.getProfile();
-                screen.showMessage(prof.getEmail());
+                screen.showMessage(prof.getEmail() + " login success");
+                screen.navigateToMain();
             }
         }
     }

@@ -7,4 +7,5 @@ package aut.bme.hu.mobsoftlab.ui.login;
 public interface LoginScreen {
     void showMessage(String text);
     void show();
+    void navigateToMain();
 }

@@ -1,5 +1,6 @@
 package aut.bme.hu.mobsoftlab.network;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import aut.bme.hu.mobsoftlab.network.movie.MovieApi;

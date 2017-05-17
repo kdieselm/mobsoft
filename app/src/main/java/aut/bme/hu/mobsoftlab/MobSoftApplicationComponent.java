@@ -9,6 +9,9 @@ import javax.inject.Singleton;
 import aut.bme.hu.mobsoftlab.interactor.InteractorModule;
 import aut.bme.hu.mobsoftlab.interactor.movie.MoviesInteractor;
 import aut.bme.hu.mobsoftlab.interactor.user.UserInteractor;
+import aut.bme.hu.mobsoftlab.mock.MockNetworkModule;
+import aut.bme.hu.mobsoftlab.network.NetworkModule;
+import aut.bme.hu.mobsoftlab.network.movie.MovieApi;
 import aut.bme.hu.mobsoftlab.repository.RepositoryModule;
 import aut.bme.hu.mobsoftlab.ui.UIModule;
 import aut.bme.hu.mobsoftlab.ui.admin.AdminActivity;
@@ -23,7 +26,7 @@ import dagger.Component;
 
 
 @Singleton
-@Component(modules = {UIModule.class, InteractorModule.class, RepositoryModule.class})
+@Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class, MockNetworkModule.class})
 public interface MobSoftApplicationComponent {
     void inject(MainActivity mainActivity);
     void inject(LoginActivity loginActivity);

@@ -27,6 +27,7 @@ public class UIModule {
         this.context = context;
     }
 
+    @Singleton
     @Provides
     public Context provideContext() {
         return context;
@@ -58,13 +59,13 @@ public class UIModule {
 
     @Provides
     @Singleton
-    EventBus provideEventBus() {
+    public EventBus provideEventBus() {
         return EventBus.getDefault();
     }
 
     @Provides
     @Singleton
-    Executor provideExecutor() {
+    public Executor provideExecutor() {
         return Executors.newFixedThreadPool(1);
     }
 }
