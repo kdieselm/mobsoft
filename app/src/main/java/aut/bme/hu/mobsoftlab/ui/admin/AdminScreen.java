@@ -7,4 +7,5 @@ package aut.bme.hu.mobsoftlab.ui.admin;
 public interface AdminScreen {
     void showModel(String model);
     void showError(String error);
+    void navigateToMain();
 }

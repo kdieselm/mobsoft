@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import aut.bme.hu.mobsoftlab.MobSoftApplication;
 import aut.bme.hu.mobsoftlab.R;
 import aut.bme.hu.mobsoftlab.model.Profile;
+import aut.bme.hu.mobsoftlab.ui.admin.AdminActivity;
+import aut.bme.hu.mobsoftlab.ui.admin.AdminPresenter;
 import aut.bme.hu.mobsoftlab.ui.main.MainActivity;
 
 import static android.R.attr.password;
@@ -57,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen {
 
     @Override
     public void navigateToMain() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, AdminActivity.class);
         startActivity(intent);
         finish();
     }
@@ -68,6 +70,7 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen {
         Profile prof = new Profile();
         prof.setEmail(mEmail.getText().toString());
         prof.setPassword(mPass.getText().toString());
+        System.out.println("logactivity start");
         loginPresenter.loginUser(prof);
     }
 }

@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import aut.bme.hu.mobsoftlab.interactor.movie.MoviesInteractor;
 import aut.bme.hu.mobsoftlab.interactor.movie.events.GetAllRatingForMovieEvent;
 import aut.bme.hu.mobsoftlab.interactor.movie.events.GetMovieEvent;
+import aut.bme.hu.mobsoftlab.interactor.movie.events.RateMovieEvent;
 import aut.bme.hu.mobsoftlab.interactor.user.UserInteractor;
 import aut.bme.hu.mobsoftlab.interactor.user.events.LoginEvent;
 import aut.bme.hu.mobsoftlab.model.Movie;
@@ -62,20 +63,69 @@ public class DetailsPresenter extends Presenter<DetailsScreen> {
         });
     }
 
+    public void allMovieRatings(final Movie movie){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                moviesInteractor.getAllRating(movie);
+            }
+        });
+    }
+
+    public void rateMovie(final Rating rating){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                moviesInteractor.rateMovie(rating);
+            }
+        });
+    }
+
 
     public void onEventMainThread(GetMovieEvent event) {
         Log.d("test","test");
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
-                screen.showModel("error");
+                screen.showError("error");
             }
             Log.e("Networking", "Error reading favourites", event.getThrowable());
         } else {
             if (screen != null) {
                 Movie movie = event.getMovie();
-                screen.showModel(movie.getTitle() + " " + movie.getDirector() + " " + movie.getGenre() + " " + movie.getYear());
-                screen.showActorList(movie.getActors());
+                screen.showModel(movie);
+            }
+        }
+    }
+
+    public void onEventMainThread(GetAllRatingForMovieEvent event) {
+        Log.d("test","test");
+        if (event.getThrowable() != null) {
+            event.getThrowable().printStackTrace();
+            if (screen != null) {
+                screen.showError("error");
+            }
+            Log.e("Networking", "Error reading favourites", event.getThrowable());
+        } else {
+            if (screen != null) {
+                List<Rating> ratings = event.getRatings();
+                System.out.println(ratings.size());
+                screen.showRating(ratings);
+            }
+        }
+    }
+
+    public void onEventMainThread(RateMovieEvent event) {
+        Log.d("test","test");
+        if (event.getThrowable() != null) {
+            event.getThrowable().printStackTrace();
+            if (screen != null) {
+                screen.showError("error");
+            }
+            Log.e("Networking", "Error reading favourites", event.getThrowable());
+        } else {
+            if (screen != null) {
+                screen.navigateBack();
             }
         }
     }

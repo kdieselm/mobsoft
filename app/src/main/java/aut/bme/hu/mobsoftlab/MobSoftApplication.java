@@ -2,6 +2,8 @@ package aut.bme.hu.mobsoftlab;
 
 import android.app.Application;
 
+import com.orm.SugarContext;
+
 import javax.inject.Inject;
 
 import aut.bme.hu.mobsoftlab.repository.Repository;
@@ -27,7 +29,10 @@ public class MobSoftApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         injector = DaggerMobSoftApplicationComponent.builder().uIModule(new UIModule(this)).build();
+        injector.inject(this);
+        repository.open(getApplicationContext());
     }
 
 }

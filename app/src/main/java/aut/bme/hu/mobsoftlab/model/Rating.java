@@ -50,11 +50,11 @@ public class Rating {
   }
 
   public int getMovieRating() {
-    return rating;
+    return movierating;
   }
 
-  public void setRating(int rating) {
-    this.rating = rating;
+  public void setMovieRating(int rating) {
+    this.movierating = rating;
   }
 
   @SerializedName("user_id")

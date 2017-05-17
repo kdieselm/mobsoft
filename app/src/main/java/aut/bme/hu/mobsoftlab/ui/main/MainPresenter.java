@@ -66,9 +66,7 @@ public class MainPresenter extends Presenter<MainScreen> {
             Log.e("Networking", "Error reading favourites", event.getThrowable());
         } else {
             if (screen != null) {
-                for(Movie m : event.getMovies()){
-                    screen.showMessage(m.getTitle());
-                }
+                screen.showList(event.getMovies());
             }
         }
     }

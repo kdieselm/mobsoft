@@ -47,11 +47,13 @@ public class MoviesInteractor {
         AddMovieEvent event = new AddMovieEvent();
         try{
             repository.addMovie(movie);
-            //event.setMovie(movie);
+            event.setSuccess(true);
+            event.setMovie(movie);
             bus.post(event);
         }
         catch(Exception e){
             event.setThrowable(e);
+            event.setSuccess(false);
             bus.post(event);
         }
     }

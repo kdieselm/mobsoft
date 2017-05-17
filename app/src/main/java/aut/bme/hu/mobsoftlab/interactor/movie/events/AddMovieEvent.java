@@ -10,6 +10,16 @@ public class AddMovieEvent {
     private Movie movie;
     private Throwable throwable;
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    private boolean success;
+
     public Movie getMovie() {
         return movie;
     }

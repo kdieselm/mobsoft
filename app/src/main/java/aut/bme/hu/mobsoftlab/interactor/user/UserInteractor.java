@@ -33,35 +33,41 @@ public class UserInteractor {
     }
 
     public void logIn(final Profile profile){
+        System.out.println("userinteractor login begin");
         Credentials cred = new Credentials();
         cred.setEmail(profile.getEmail());
         cred.setPassword(profile.getPassword());
-        api.userLoginPost(cred).enqueue(new Callback<LoggedInProfile>() {
-            @Override
-            public void onResponse(Response<LoggedInProfile> response) {
-                LoginEvent event = new LoginEvent();
-                event.setProfile(profile);
-                event.setSuccess(true);
-                repository.loginUser(profile);
-                bus.post(event);
-            }
 
-            @Override
-            public void onFailure(Throwable t) {
-                LoginEvent event = new LoginEvent();
-                event.setThrowable(t);
-                event.setSuccess(false);
-                bus.post(event);
-            }
-        });
-//        LoginEvent event = new LoginEvent();
-//        try{
-//            repository.loginUser(profile);
-//            bus.post(event);
-//        }
-//        catch (Exception e){
-//            event.setThrowable(e);
-//            bus.post(event);
-//        }
+//        api.userLoginPost(cred).enqueue(new Callback<LoggedInProfile>() {
+//            @Override
+//            public void onResponse(Response<LoggedInProfile> response) {
+//                System.out.println("userinteractor enque begin success");
+//                LoginEvent event = new LoginEvent();
+//                event.setProfile(profile);
+//                event.setSuccess(true);
+//                repository.loginUser(profile);
+//                bus.post(event);
+//            }
+//
+//            @Override
+//            public void onFailure(Throwable t) {
+//                System.out.println("userinteractor enque begin fail");
+//                LoginEvent event = new LoginEvent();
+//                event.setThrowable(t);
+//                event.setSuccess(false);
+//                bus.post(event);
+//            }
+//        });
+        LoginEvent event = new LoginEvent();
+        try{
+            boolean loginSuccess = repository.loginUser(profile);
+            event.setSuccess(loginSuccess);
+            bus.post(event);
+        }
+        catch (Exception e){
+            event.setThrowable(e);
+            event.setSuccess(false);
+            bus.post(event);
+        }
     }
 }

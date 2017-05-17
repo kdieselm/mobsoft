@@ -57,6 +57,7 @@ public class LoginPresenter extends Presenter<LoginScreen> {
                 userInteractor.logIn(profile);
             }
         });
+        System.out.println("loginpres login end");
 
     }
 
@@ -71,9 +72,14 @@ public class LoginPresenter extends Presenter<LoginScreen> {
             Log.e("Networking", "Error reading favourites", event.getThrowable());
         } else {
             if (screen != null) {
-                Profile prof = event.getProfile();
-                screen.showMessage(prof.getEmail() + " login success");
-                screen.navigateToMain();
+                //Profile prof = event.getProfile();
+                //screen.showMessage(prof.getEmail() + " login success");
+                if(event.isSuccess()) {
+                    screen.navigateToMain();
+                }
+                else{
+                    screen.showMessage("email or password not matching");
+                }
             }
         }
     }

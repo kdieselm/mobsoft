@@ -68,7 +68,13 @@ public class AdminPresenter extends Presenter<AdminScreen> {
             Log.e("Networking", "Error reading favourites", event.getThrowable());
         } else {
             if (screen != null) {
-                screen.showModel(event.getMovie().getMovieTitle());
+                if(event.isSuccess()){
+                    screen.navigateToMain();
+                }
+                else{
+                    screen.showError("unexpected error");
+                }
+                //screen.showModel(event.getMovie().getMovieTitle());
             }
         }
     }

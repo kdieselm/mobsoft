@@ -24,6 +24,7 @@ public class MemoryRepository implements Repository {
 
     @Override
     public void open(Context context) {
+        System.out.println("memorepo");
         Movie flight1 = new Movie(1L, "movie1", 2016, "director1", "genre1", new ArrayList<String>() {{
             add("A");
             add("B");

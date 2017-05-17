@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Table
 public class Movie {
-  private Long movieid = null;
+  private Long id = null;
   private String title;
   private int year;
   private String director;
@@ -20,7 +20,7 @@ public class Movie {
   }
 
   public Movie(Long id, String name, int year, String director, String genre, List<String> actors, String imgURL) {
-    this.movieid = id;
+    this.id = id;
     this.title = name;
     this.year = year;
     this.director = director;
@@ -30,11 +30,11 @@ public class Movie {
   }
 
   public Long getMovieId() {
-    return movieid;
+    return id;
   }
 
   public void setMovieId(Long id) {
-    this.movieid = id;
+    this.id = id;
   }
 
   public String getTitle() {
@@ -86,7 +86,7 @@ public class Movie {
   }
 
 
-  private Integer id = null;
+  private Integer movieid = null;
 
   private String movieTitle = null;
 
@@ -112,10 +112,10 @@ public class Movie {
    **/
 
   public Integer getId() {
-    return id;
+    return movieid;
   }
   public void setId(Integer id) {
-    this.id = id;
+    this.movieid = id;
   }
 
 
@@ -201,7 +201,7 @@ public class Movie {
       return false;
     }
     Movie movie = (Movie) o;
-    return Objects.equals(id, movie.id) &&
+    return Objects.equals(movieid, movie.movieid) &&
             Objects.equals(movieTitle, movie.movieTitle) &&
             Objects.equals(movieYear, movie.movieYear) &&
             Objects.equals(movieDirector, movie.movieDirector) &&
@@ -212,7 +212,7 @@ public class Movie {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, movieTitle, movieYear, movieDirector, movieGenre, movieActors, movieImage);
+    return Objects.hash(movieid, movieTitle, movieYear, movieDirector, movieGenre, movieActors, movieImage);
   }
 
   @Override
