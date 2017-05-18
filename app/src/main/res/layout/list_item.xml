@@ -7,6 +7,6 @@
         android:id="@+id/txtitem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:fontFamily="monospace"
+        android:textSize="24sp" />
 </LinearLayout>

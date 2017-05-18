@@ -119,17 +119,19 @@
 
     <Button
         android:id="@+id/rate"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="rateClicked"
-        android:text="Rate"
+        android:layout_alignBottom="@+id/ratingBar"
         android:layout_alignTop="@+id/ratingBar"
-        android:layout_toRightOf="@+id/button5"
         android:layout_toEndOf="@+id/button5"
-        android:layout_alignBottom="@+id/ratingBar" />
+        android:layout_toRightOf="@+id/button5"
+        android:onClick="rateClicked"
+        android:text="Rate" />
 
     <Button
         android:id="@+id/button5"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

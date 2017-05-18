@@ -65,10 +65,11 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         ArrayList<String> arrayList = new ArrayList<String>();
         ArrayAdapter<String> arrayAdapter;
         for(int i=0; i<movies.size(); i++){
-            arrayList.add(movies.get(i).getTitle() + " " + movies.get(i).getYear());
+            arrayList.add(movies.get(i).getTitle());
         }
         arrayAdapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.txtitem, arrayList);
         list.setAdapter(arrayAdapter);
+        list.setPadding(20,10,20,10);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

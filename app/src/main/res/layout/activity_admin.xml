@@ -7,11 +7,13 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="Add new movie"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:typeface="serif"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/title"
@@ -74,11 +76,12 @@
 
     <Button
         android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/genre"
         android:layout_centerHorizontal="true"
-        android:onClick="addMovieClicked"
         android:layout_marginTop="44dp"
+        android:onClick="addMovieClicked"
         android:text="Add" />
 </RelativeLayout>
